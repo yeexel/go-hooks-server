@@ -28,7 +28,7 @@ func main() {
 	mux.Handle("/api/webhooks", WebhookRegisterHandler{storage})
 	mux.Handle("/api/webhooks/test", WebhookTestHandler{storage})
 
-	log.Fatal(http.ListenAndServe(":9876", mux))
+	log.Fatal(http.ListenAndServe(":9876", logRequest(mux)))
 }
 
 // validateRequest decodes request body into struct and performs validation afterwords.
@@ -42,4 +42,13 @@ func validateRequest(requestBody io.ReadCloser, target interface{}) error {
 	}
 
 	return nil
+}
+
+// logRequest adds basic logging functionality to the server.
+// Log entry example: 2021/05/01 19:52:40 [::1]:58694 POST /api/webhooks
+func logRequest(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
+		handler.ServeHTTP(w, r)
+	})
 }
