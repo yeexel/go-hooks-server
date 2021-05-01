@@ -67,5 +67,5 @@ curl --location --request POST 'http://localhost:9876/api/webhooks/test' \
 ### Limitations
 
 - The hooks server is using in-memory store which will be reset on server restart.
-- Request timeout is missing for `/api/webhooks/test`endpoint meaning that requests to unknown/un-existing domains may take longer time to finish. This can be fixed by providing standalone HTTP client with `http.Transport` implementation.
+- Request timeout is missing for `/api/webhooks/test` endpoint meaning that requests to unknown/un-existing domains may take longer time to finish. This can be fixed by providing standalone HTTP client with `http.Transport` implementation.
 - Rate-limiting is not supported at the moment.
