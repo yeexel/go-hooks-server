@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  app:
+    image: golang:1.16-alpine
+    ports:
+      - 9876:9876
+    volumes:
+      - .:/go/src/go-hooks-server
+    working_dir: /go/src/go-hooks-server
+    command: go run .

@@ -31,7 +31,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":9876", logRequest(mux)))
 }
 
-// validateRequest decodes request body into struct and performs validation afterwords.
+// validateRequest decodes request body into struct and performs validation afterwards.
 func validateRequest(requestBody io.ReadCloser, target interface{}) error {
 	validate := validator.New()
 
