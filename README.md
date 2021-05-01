@@ -20,7 +20,7 @@ The hooks server has 2 endpoints available.
 
 #### POST /api/webhooks
 
-This endpoint allows to register a webhook with `url`and `token` params provided.
+This endpoint allows to register a webhook with `url` and `token` params provided.
 
 Example cURL code snippet:
 
